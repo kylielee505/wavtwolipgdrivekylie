@@ -45,4 +45,5 @@ with gr.Blocks() as ui:
         generate, 
         [video, audio, checkpoint, pad_top, pad_bottom, pad_left, pad_right, resize_factor], 
         result)
-ui.queue().launch()
+    
+ui.queue().launch(share=True, debug=True)
