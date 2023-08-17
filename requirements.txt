@@ -3,7 +3,7 @@ future
 librosa==0.7.0
 lmdb
 numba==0.48
-numpy==1.18
+numpy==1.21.1
 opencv-contrib-python>=4.2.0.34
 opencv-python
 Pillow
