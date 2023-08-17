@@ -1,3 +1,4 @@
+python==3.8
 addict
 future
 librosa==0.7.0
