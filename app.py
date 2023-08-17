@@ -38,13 +38,8 @@ with gr.Blocks() as ui:
             "--outfile", "results/output.mp4",
         ]
 
-        
-        process = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
-        if process.returncode == 0:
-            result.value = "results/output.mp4"
-        else:
-            result.value = "Error: Failed to generate video"
+        call(cmd)
+        return "results/output.mp4"
 
     generate_btn.click(
         generate, 
