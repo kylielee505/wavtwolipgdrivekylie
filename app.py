@@ -1,7 +1,6 @@
 import gradio as gr
 from subprocess import call
 
-# UI Components Setup with the generate function
 with gr.Blocks() as ui:
     with gr.Row():
         video = gr.File(label="Video or Image", info="Filepath of video/image that contains faces to use")
@@ -19,30 +18,31 @@ with gr.Blocks() as ui:
             generate_btn = gr.Button("Generate")
         with gr.Column():
            result = gr.Video()
-        
-        # Define the generate function
-        def generate():
-            if video is None or audio is None or checkpoint is None:
-                return
-        
-            smooth = "--nosmooth" if no_smooth else ""
-        
-            cmd = [
-                "python3.8",  # Use Python 3.8
-                "inference.py",
-                "--checkpoint_path", f"checkpoints/{checkpoint}.pth",
-                "--segmentation_path", "checkpoints/face_segmentation.pth",
-                "--enhance_face", "gfpgan",
-                "--face", video.name,
-                "--audio", audio.name,
-                "--outfile", "results/output.mp4",
-            ]
 
-            call(cmd)
-            result.value = "results/output.mp4"
+    def generate(video, audio, checkpoint, no_smooth, resize_factor, pad_top, pad_bottom, pad_left, pad_right):
+        if video is None or audio is None or checkpoint is None:
+            return
+        
+        smooth = "--nosmooth" if no_smooth else ""
+        
+        
+        cmd = [
+            "python",
+            "inference.py",
+            "--checkpoint_path", f"checkpoints/{checkpoint}.pth",
+            "--segmentation_path", "checkpoints/face_segmentation.pth",
+            "--enhance_face", "gfpgan",
+            "--face", video.name,
+            "--audio", audio.name,
+            "--outfile", "results/output.mp4",
+        ]
 
-# Create the interface
-iface = gr.Interface(ui.queue(), generate_btn)
+        
+        call(cmd)
+        return "results/output.mp4"
 
-# Launch the interface
-iface.launch(share=True)
+    generate_btn.click(
+        generate, 
+        [video, audio, checkpoint, pad_top, pad_bottom, pad_left, pad_right, resize_factor], 
+        result)
+ui.queue().launch()
