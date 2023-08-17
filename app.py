@@ -42,7 +42,7 @@ with gr.Blocks() as ui:
             result.value = "results/output.mp4"
 
 # Create the interface
-iface = gr.Interface(ui.queue(), generate_btn, "web", debug=True)
+iface = gr.Interface(ui.queue(), generate_btn)
 
 # Launch the interface
 iface.launch(share=True)
