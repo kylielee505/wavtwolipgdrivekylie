@@ -1,4 +1,5 @@
 import gradio as gr
+import subprocess
 from subprocess import call
 
 with gr.Blocks() as ui:
