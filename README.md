@@ -6,7 +6,7 @@ colorTo: blue
 sdk: gradio
 python_version: 3.8
 sdk_version: 3.40.1
-suggested_hardware: a100-large
+suggested_hardware: "t4-medium"
 app_file: app.py
 pinned: false
 license: apache-2.0
