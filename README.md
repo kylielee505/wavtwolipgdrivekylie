@@ -1,6 +1,6 @@
 ---
 title: Gradio Lipsync Wav2lip
-emoji: 🐠
+emoji: 👄
 colorFrom: indigo
 colorTo: blue
 sdk: gradio
