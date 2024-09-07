@@ -5,8 +5,8 @@ colorFrom: indigo
 colorTo: blue
 sdk: gradio
 python_version: 3.8
-sdk_version: 3.40.1
-suggested_hardware: "t4-medium"
+sdk_version: 4.43.0
+suggested_hardware: t4-medium
 app_file: app.py
 pinned: false
 license: apache-2.0
